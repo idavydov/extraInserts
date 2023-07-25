@@ -7,11 +7,21 @@
 #' @name utility_functions
 NULL
 
+#' Check if console if currently focused.
+#'
+#' @return logical
+consoleFocused <- function() {
+    rstudioapi::getActiveDocumentContext()$id == "#console"
+}
+
 #' @section Check space:
 #' Check if last character is an empty space.
 #'
 #' @rdname utility_functions
 nextToSpace <- function() {
+    if (consoleFocused()) {
+        return(FALSE)
+    }
     # FIXME: not passing right T/F value
     # Source context information and position
     current_context <- rstudioapi::getSourceEditorContext()
