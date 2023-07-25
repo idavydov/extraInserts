@@ -27,12 +27,14 @@ nextToSpace <- function() {
     current_context <- rstudioapi::getSourceEditorContext()
     end_row <-
         as.integer(unlist(current_context$selection)["range.end.row"])
+    end_col <-
+        as.integer(unlist(current_context$selection)["range.end.column"])
     # Get last character
     last_character <-
         substr(
             current_context$contents[end_row],
-            nchar(current_context$contents[end_row]),
-            nchar(current_context$contents[end_row])
+            end_col - 1,
+            end_col - 1
         )
 
     # Return T/F depending on empty space being last character
