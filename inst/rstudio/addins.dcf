@@ -1,3 +1,8 @@
+Name: Insert |>
+Description: Inserts `|>` at the cursor position.
+Binding: insertBuiltinPipe
+Interactive: false
+
 Name: Insert ->
 Description: Inserts `->` at the cursor position.
 Binding: insertRightAssignment
